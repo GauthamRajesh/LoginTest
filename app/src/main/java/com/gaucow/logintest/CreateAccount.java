@@ -61,9 +61,28 @@ public class CreateAccount extends AppCompatActivity {
                             Toast.makeText(CreateAccount.this, "Account creation successful.",
                                     Toast.LENGTH_SHORT).show();
                             user = mAuth.getCurrentUser();
+                            sendEmailVerification();
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(CreateAccount.this, "Account creation failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    public void sendEmailVerification() {
+        user.sendEmailVerification()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(c,
+                                    "Verification email sent to " + user.getEmail(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e(TAG, "sendEmailVerification", task.getException());
+                            Toast.makeText(c,
+                                    "Failed to send verification email.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
