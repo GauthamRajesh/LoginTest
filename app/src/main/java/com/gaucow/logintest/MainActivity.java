@@ -160,6 +160,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         });
         createAccountLabel.setText(styledText);
+        createAccountLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CreateAccount.class));
+            }
+        });
     }
     @Override
     public void onStart() {

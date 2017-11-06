@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.gaucow.logintest.CreateAccount"
-    android:orientation="vertical">
-
+    android:id="@+id/coordinatorLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <EditText
         android:id="@+id/create_user_email"
         android:layout_width="300dp"
@@ -34,4 +37,13 @@
         android:layout_marginTop="10dp"
         android:inputType="textPassword"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/createAccount"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:backgroundTint="#00FFAE" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
