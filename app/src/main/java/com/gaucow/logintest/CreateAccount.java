@@ -1,6 +1,6 @@
 package com.gaucow.logintest;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -16,12 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class CreateAccount extends AppCompatActivity {
     Button createAccount;
     EditText userEmail, userPassword, userPasswordRepeat;
     FirebaseAuth mAuth;
     CoordinatorLayout snackbarLayout;
+    FirebaseUser user;
+    Context c;
     private static final String TAG = CreateAccount.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class CreateAccount extends AppCompatActivity {
         userPasswordRepeat = findViewById(R.id.create_user_password_repeat);
         mAuth = FirebaseAuth.getInstance();
         snackbarLayout = findViewById(R.id.coordinatorLayout);
+        c = this;
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,9 +58,9 @@ public class CreateAccount extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(CreateAccount.this, "Account creation successful. Please sign in to access your account",
+                            Toast.makeText(CreateAccount.this, "Account creation successful.",
                                     Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(CreateAccount.this, MainActivity.class));
+                            user = mAuth.getCurrentUser();
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(CreateAccount.this, "Account creation failed.",
