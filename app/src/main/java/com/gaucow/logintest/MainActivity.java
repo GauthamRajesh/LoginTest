@@ -1,15 +1,18 @@
 package com.gaucow.logintest;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     TwitterConfig config;
     GoogleSignInOptions gso;
     Button loginButton;
-    Button createAccount;
     EditText userEmail;
     EditText userPassword;
     LoginButton loginButtonFb;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     CallbackManager callbackManager;
     FloatingActionButton userClickFbButton;
     TwitterAuthClient authClient;
+    TextView createAccountLabel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .build();
         Twitter.initialize(config);
         setContentView(R.layout.activity_main);
+        Resources res = getResources();
+        String createAccountText = res.getString(R.string.create_new_account_label);
+        CharSequence styledText = Html.fromHtml(createAccountText);
+        createAccountLabel = findViewById(R.id.create_new_account);
         callbackManager = CallbackManager.Factory.create();
         authClient = new TwitterAuthClient();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -97,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         userClickFbButton = findViewById(R.id.user_fb_button);
         mAuth = FirebaseAuth.getInstance();
         loginButton = findViewById(R.id.log_in);
-        createAccount = findViewById(R.id.create_account);
         userEmail = findViewById(R.id.user_email);
         userPassword = findViewById(R.id.user_password);
         loginButtonFb = findViewById(R.id.fb_login_button);
@@ -116,14 +122,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 String email = userEmail.getText().toString();
                 String password = userPassword.getText().toString();
                 signIn(email, password);
-            }
-        });
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = userEmail.getText().toString();
-                String password = userPassword.getText().toString();
-                createAccount(email, password);
             }
         });
         loginButtonGoogle.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 });
             }
         });
+        createAccountLabel.setText(styledText);
     }
     @Override
     public void onStart() {
@@ -168,24 +167,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if(mAuth.getCurrentUser() != null) {
             user = mAuth.getCurrentUser();
         }
-    }
-    public void createAccount(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            Toast.makeText(MainActivity.this, "Authentication successful.",
-                                    Toast.LENGTH_SHORT).show();
-                            user = mAuth.getCurrentUser();
-                        } else {
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
     public void signIn(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)

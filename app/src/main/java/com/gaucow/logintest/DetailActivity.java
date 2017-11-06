@@ -2,6 +2,7 @@ package com.gaucow.logintest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -64,10 +65,9 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            finish();
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }

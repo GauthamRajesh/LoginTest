@@ -39,14 +39,6 @@
             android:text="@string/log_in_prompt"
             android:backgroundTint="#00FFAE" />
 
-        <Button
-            android:id="@+id/create_account"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_account_prompt"
-            android:backgroundTint="#00FFAE" />
 
     </LinearLayout>
 
@@ -58,7 +50,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp">
@@ -97,5 +89,27 @@
             app:backgroundTint="#00aced"
             android:src="@drawable/tw__composer_logo_white"/>
 
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:text="@string/no_account_label" />
+        <TextView
+            android:id="@+id/create_new_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/create_new_account_label" />
     </LinearLayout>
 </LinearLayout>

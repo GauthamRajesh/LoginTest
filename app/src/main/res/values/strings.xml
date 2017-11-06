@@ -25,4 +25,7 @@
         completions."
     </string>
     <string name="signin_alternatives">Or, sign in with:</string>
+    <string name="password_prompt_repeat">Repeat Password</string>
+    <string name="no_account_label">No account?</string>
+    <string name="create_new_account_label">&lt;u>Create one&lt;/u>.</string>
 </resources>
