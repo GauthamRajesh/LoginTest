@@ -58,13 +58,13 @@ public class CreateAccount extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(CreateAccount.this, "Account creation successful.",
+                            Toast.makeText(c, "Account creation successful. Check your email for a verification link.",
                                     Toast.LENGTH_SHORT).show();
                             user = mAuth.getCurrentUser();
                             sendEmailVerification();
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(CreateAccount.this, "Account creation failed.",
+                            Toast.makeText(c, "Account creation failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -29,4 +29,6 @@
     <string name="no_account_label">No account?</string>
     <string name="create_new_account_label">&lt;u>Create one&lt;/u>.</string>
     <string name="create_account">Create Account</string>
+    <string name="forgot_password_label">Forgot password?</string>
+    <string name="reset_it_here">Reset it here.</string>
 </resources>

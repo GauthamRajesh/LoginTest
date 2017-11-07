@@ -45,7 +45,8 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".DetailActivity" />
-        <activity android:name=".CreateAccount"></activity>
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".ResetPassword"></activity>
     </application>
 
 </manifest>

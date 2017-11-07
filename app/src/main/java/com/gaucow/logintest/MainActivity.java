@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     FloatingActionButton userClickFbButton;
     TwitterAuthClient authClient;
     TextView createAccountLabel;
+    TextView resetPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         String createAccountText = res.getString(R.string.create_new_account_label);
         CharSequence styledText = Html.fromHtml(createAccountText);
         createAccountLabel = findViewById(R.id.create_new_account);
+        resetPassword = findViewById(R.id.forgot_password);
         callbackManager = CallbackManager.Factory.create();
         authClient = new TwitterAuthClient();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -166,6 +168,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 startActivity(new Intent(MainActivity.this, CreateAccount.class));
             }
         });
+        String forgotPasswordString = res.getString(R.string.reset_it_here);
+        CharSequence forgotPasswordString_styled = Html.fromHtml(forgotPasswordString);
+        resetPassword.setText(forgotPasswordString_styled);
     }
     @Override
     public void onStart() {

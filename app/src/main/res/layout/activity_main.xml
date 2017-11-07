@@ -51,7 +51,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp">
 
@@ -70,16 +70,16 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             app:backgroundTint="#415dae"
             android:src="@drawable/com_facebook_button_login_logo"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp" />
 
-        <android.support.design.widget.FloatingActionButton
+        <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/sign_in_google_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:backgroundTint="#FFFFFF"
+            android:layout_marginRight="10dp"
             android:src="@drawable/googleg_standard_color_18"
-            android:layout_marginRight="10dp"/>
+            app:backgroundTint="#FFFFFF"
+            android:layout_marginTop="15dp"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/twitter_login_button"
@@ -87,15 +87,11 @@
             android:layout_height="wrap_content"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             app:backgroundTint="#00aced"
-            android:src="@drawable/tw__composer_logo_white"/>
+            android:src="@drawable/tw__composer_logo_white"
+            android:layout_marginTop="15dp"/>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -114,5 +110,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/create_new_account_label" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:text="@string/forgot_password_label" />
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/reset_it_here" />
     </LinearLayout>
 </LinearLayout>
