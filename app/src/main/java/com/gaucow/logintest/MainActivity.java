@@ -171,6 +171,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         String forgotPasswordString = res.getString(R.string.reset_it_here);
         CharSequence forgotPasswordString_styled = Html.fromHtml(forgotPasswordString);
         resetPassword.setText(forgotPasswordString_styled);
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ResetPassword.class));
+            }
+        });
     }
     @Override
     public void onStart() {
@@ -186,9 +192,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(MainActivity.this, "Authentication successful.",
-                                    Toast.LENGTH_SHORT).show();
                             user = mAuth.getCurrentUser();
+                            if((!user.isEmailVerified())) {
+                                Toast.makeText(MainActivity.this, "Verify your email account.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.",

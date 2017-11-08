@@ -48,13 +48,6 @@
         android:text="@string/signin_alternatives"
         android:layout_marginLeft="20dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp">
-
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fb_login_button"
             android:layout_width="wrap_content"
@@ -70,6 +63,8 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             app:backgroundTint="#415dae"
             android:src="@drawable/com_facebook_button_login_logo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp" />
 
         <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -79,7 +74,8 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/googleg_standard_color_18"
             app:backgroundTint="#FFFFFF"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/twitter_login_button"
@@ -88,9 +84,8 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             app:backgroundTint="#00aced"
             android:src="@drawable/tw__composer_logo_white"
-            android:layout_marginTop="15dp"/>
-
-    </LinearLayout>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
 
 
     <LinearLayout
